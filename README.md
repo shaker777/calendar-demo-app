@@ -5,7 +5,7 @@
 
 Разработка - Vue 3
 
-Стили - SCSSS
+Стили - SCSS
 
 UI библиотека - Element Plus 
 
