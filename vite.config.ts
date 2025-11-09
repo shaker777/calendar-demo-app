@@ -8,7 +8,7 @@ export default defineConfig({
         vue(),
         vueDevTools()
     ],
-    base: "/calendar-app/",
+    base: "/calendar-demo-app/",
     define: {
         '__APP_VERSION__': JSON.stringify(process.env.npm_package_version),
     },
