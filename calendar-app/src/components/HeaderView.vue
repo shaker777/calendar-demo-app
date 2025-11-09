@@ -1,14 +1,13 @@
 <template>
-  <header id="header">
+  <header class="header_content">
     <h2 class="title">{{title}}</h2>
     <div class="date_picker">
       <el-config-provider :locale="locale === 'ru' ? ru : en">
     <el-date-picker
-      v-model="date_value"
+      v-model="store.state.selectedDate"
       type="date"
       :placeholder="$t('titles.date_picker_placeholder')"
       size="default"
-      @change="handleChange"
     />
       </el-config-provider>
     </div>
@@ -29,7 +28,6 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
-import {ref} from "vue";
 import { ElConfigProvider } from 'element-plus'
 import ru from 'element-plus/es/locale/lang/ru'
 import en from 'element-plus/es/locale/lang/en'
@@ -38,35 +36,18 @@ defineProps<{
   title: string
 }>()
 
-const date_value = ref('')
 const { locale } = useI18n()
 const store = useAppStore()
-
-function handleChange(value:any|null) {
-  if (value === null) {
-    return;
-  }
-  if (value instanceof Date) {
-    console.log('date: ', value);
-    const formattedDate:string = value.toISOString().slice(0, 10);
-    store.setSelectedDate(formattedDate);
-  }
-
-}
 
 </script>
 
 <style scoped lang="scss">
-#header {
+.header_content {
   background: rgb(45, 196, 143);
   color: #fff;
   padding: 1rem;
   width: 100%;
-  position: fixed;
-  top: 0;
-  margin: 0;
   height: 60px;
-  z-index: 100;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

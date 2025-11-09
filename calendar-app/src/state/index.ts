@@ -1,21 +1,28 @@
 import type {AppState} from './AppState'
 import { defineStore } from 'pinia'
-import {computed, reactive} from 'vue'
+import {reactive} from 'vue'
 
 export const useAppStore = defineStore('appStore', () => {
     const state = reactive<AppState>({
-        selectedDate: '',
+        selectedDate: undefined,
     }) as AppState
 
-    const getSelectedDate = computed((): string | null => state.selectedDate)
-
-    function setSelectedDate (value:string): void {
-        console.log('banana: ', value)
-        state.selectedDate = value
+    function setDate (value:string): void {
+        try {
+            const date = new Date(value);
+            if (isNaN(date.valueOf())) {
+                state.selectedDate = new Date();
+            } else {
+                state.selectedDate = date;
+            }
+        } catch (error) {
+            console.error("An unexpected error occurred:", error);
+            state.selectedDate = new Date();
+        }
     }
 
     return {
-        getSelectedDate,
-        setSelectedDate
+        state,
+        setDate
     }
 })

@@ -1,3 +1,3 @@
 export type AppState = {
-    selectedDate: string;
+    selectedDate: Date|undefined;
 }

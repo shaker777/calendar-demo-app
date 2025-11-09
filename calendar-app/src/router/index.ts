@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import CalendarView from '@/components/CalendarView.vue'
+import ContentView from '@/components/ContentView.vue'
 
 const router = createRouter({
     history: createWebHistory('/calendar-app'),
@@ -7,7 +7,7 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: CalendarView,
+            component: ContentView,
         }
     ],
     linkActiveClass: '',

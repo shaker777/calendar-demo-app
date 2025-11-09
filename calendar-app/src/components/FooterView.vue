@@ -1,5 +1,5 @@
 <template>
-  <footer id="footer">
+  <footer class="footer_content">
     <p class="title">{{title}}</p>
   </footer>
 </template>
@@ -11,19 +11,11 @@ defineProps<{
 </script>
 
 <style scoped lang="scss">
-#footer {
-  background: dimgray;
-  color: #fff;
+.footer_content {
   padding: 01rem;
-  position: fixed;
-  bottom: 0;
   width: 100%;
   margin: 0;
-  height: 30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  height: 40px;
 }
 .title {
   font-size: 12px;
