@@ -13,7 +13,7 @@ const store = useAppStore()
 
 const { locale } = useI18n()
 
-const dateOptions = {
+const dateOptions:Intl.DateTimeFormatOptions = {
   weekday: "long",
   year: "numeric",
   month: "long",
@@ -22,11 +22,13 @@ const dateOptions = {
 
 function showNotification () {
   const loc:any = locale;
-  ElNotification({
-    title: store.state.selectedDate.toLocaleDateString(loc.value, dateOptions),
-    duration: 1000,
-    position: 'bottom-right'
-  })
+  if (store.state.selectedDate) {
+    ElNotification({
+      title: store.state.selectedDate.toLocaleDateString(loc.value, dateOptions),
+      duration: 1000,
+      position: 'bottom-right'
+    })
+  }
 }
 
 watch(() => store.state.selectedDate, (newValue, oldValue) => {
